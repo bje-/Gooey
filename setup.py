@@ -30,8 +30,8 @@ setup(
     packages=find_packages(),
     install_requires=deps,
     include_package_data=True,
-    dependency_links = ["http://www.wxpython.org/download.php"],
-    classifiers = [
+    dependency_links=["http://www.wxpython.org/download.php"],
+    classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Topic :: Desktop Environment',
