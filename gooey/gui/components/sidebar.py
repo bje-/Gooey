@@ -81,6 +81,3 @@ class Sidebar(wx.Panel):
         container.AddSpacer(20)
         self.leftPanel.SetSizer(container)
         return self.leftPanel
-
-
-

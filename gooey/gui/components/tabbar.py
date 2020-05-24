@@ -18,7 +18,7 @@ class Tabbar(wx.Panel):
 
     def layoutComponent(self):
         for group, panel in zip(self.options, self.configPanels):
-            panel.Reparent( self.notebook)
+            panel.Reparent(self.notebook)
             self.notebook.AddPage(panel, group)
             self.notebook.Layout()
 

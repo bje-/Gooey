@@ -6,8 +6,9 @@ from gooey.gui.util import wx_util
 from gooey.util.functional import getin, flatmap, compact, indexunique
 from gooey.gui.lang.i18n import _
 
+
 class ConfigPage(ScrolledPanel):
-    def __init__(self, parent, rawWidgets, buildSpec,  *args, **kwargs):
+    def __init__(self, parent, rawWidgets, buildSpec, *args, **kwargs):
         super(ConfigPage, self).__init__(parent, *args, **kwargs)
         self.SetupScrolling(scroll_x=False, scrollToTop=False)
         self.rawWidgets = rawWidgets
@@ -16,11 +17,11 @@ class ConfigPage(ScrolledPanel):
         self.layoutComponent()
         self.Layout()
         self.widgetsMap = indexunique(lambda x: x._id, self.reifiedWidgets)
-        ## TODO: need to rethink what uniquely identifies an argument.
-        ## Out-of-band IDs, while simple, make talking to the client program difficult
-        ## unless they're agreed upon before hand. Commands, as used here, have the problem
-        ## of (a) not being nearly granular enough (for instance,  `-v` could represent totally different
-        ## things given context/parser position), and (b) cannot identify positional args.
+        # TODO: need to rethink what uniquely identifies an argument.
+        # Out-of-band IDs, while simple, make talking to the client program difficult
+        # unless they're agreed upon before hand. Commands, as used here, have the problem
+        # of (a) not being nearly granular enough (for instance,  `-v` could represent totally different
+        # things given context/parser position), and (b) cannot identify positional args.
 
     def getName(self, group):
         """
@@ -120,7 +121,7 @@ class ConfigPage(ScrolledPanel):
             description = AutoWrappedStaticText(parent, label=group_description, target=boxSizer)
             description.SetForegroundColour(getin(group, ['options', 'description_color']))
             description.SetMinSize((0, -1))
-            boxSizer.Add(description, 1,  wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
+            boxSizer.Add(description, 1, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
 
         # apply an underline when a grouping border is not specified
         # unless the user specifically requests not to show it
@@ -214,7 +215,3 @@ class TabbedConfigPage(ConfigPage):
         _sizer.Add(self.notebook, 1, wx.EXPAND)
         self.SetSizer(_sizer)
         self.Layout()
-
-
-
-

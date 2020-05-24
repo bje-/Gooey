@@ -7,4 +7,3 @@ if sys.platform.startswith("win"):
 else:  # POSIX shell
   def quote(value):
     return u"'{}'".format(u'{}'.format(value).replace(u"'", u"'\\''"))
-

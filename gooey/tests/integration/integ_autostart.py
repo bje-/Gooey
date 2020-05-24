@@ -31,7 +31,7 @@ class TestGooeyIntegration(unittest.TestCase):
             # without manually starting the program
             title = app.TopWindow.header._header.GetLabel()
             subtitle = app.TopWindow.header._subheader.GetLabel()
-            self.assertEqual(title,_("running_title"))
+            self.assertEqual(title, _("running_title"))
             self.assertEqual(subtitle, _('running_msg'))
 
             # Wait for Gooey to swap the header to the final screen
@@ -60,9 +60,3 @@ class TestGooeyIntegration(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
-
-

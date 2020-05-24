@@ -33,7 +33,7 @@ class Console(wx.Panel):
             self.getFontFace(),
         ))
         self.textbox.SetForegroundColour(self.buildSpec['terminal_font_color'])
-         
+
         self.layoutComponent()
         self.Layout()
         self.Bind(wx.EVT_TEXT_URL, self.evtUrl, self.textbox)
@@ -43,8 +43,8 @@ class Console(wx.Panel):
             # The rich console provides the embedded URL via GetString()
             # but the basic console does not
             webbrowser.open(
-                event.GetString() or
-                self.textbox.GetRange(event.URLStart,event.URLEnd))
+                event.GetString() or \
+                self.textbox.GetRange(event.URLStart, event.URLEnd))
         event.Skip()
 
 
@@ -99,5 +99,3 @@ class Console(wx.Panel):
         sizer.Add(self.textbox, 1, wx.LEFT | wx.RIGHT | wx.BOTTOM | wx.EXPAND, 20)
         sizer.AddSpacer(20)
         self.SetSizer(sizer)
-
-

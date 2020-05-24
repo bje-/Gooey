@@ -15,6 +15,7 @@ __all__ = ['load', '_']
 
 _DICTIONARY = None
 
+
 def load(language_dir, filename, encoding):
   ''' Open and return the supplied json file '''
   global _DICTIONARY
@@ -27,8 +28,10 @@ def load(language_dir, filename, encoding):
                   'Make sure that your translation file is in the '
                   'listed language directory'.format(filename.title(), language_dir))
 
+
 def translate(key):
   return _DICTIONARY.get(key, '(Translate me!) {}'.format(key))
+
 
 def _(key):
   return translate(key)

@@ -23,11 +23,11 @@ def getResourcePath(*args):
         if not os.path.isdir(resource_dir):
             raise IOError(
                 (
-                "Cannot locate Gooey resources. It seems that the program was frozen, "
-                "but resource files were not copied into directory of the executable "
-                "file. Please copy `languages` and `images` folders from gooey module "
-                "directory into `{}{}` directory. Using PyInstaller, a.datas in .spec "
-                "file must be specified.".format(resource_dir, os.sep)))
+                    "Cannot locate Gooey resources. It seems that the program was frozen, "
+                    "but resource files were not copied into directory of the executable "
+                    "file. Please copy `languages` and `images` folders from gooey module "
+                    "directory into `{}{}` directory. Using PyInstaller, a.datas in .spec "
+                    "file must be specified.".format(resource_dir, os.sep)))
     else:
         resource_dir = os.path.normpath(
             os.path.join(os.path.dirname(__file__), '..', '..'))

@@ -275,5 +275,3 @@ class GooeyApplication(wx.Frame):
         else:
             self.showSuccess()
         self.header.setSubtitle(_('finished_forced_quit'))
-
-
