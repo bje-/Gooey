@@ -1,6 +1,5 @@
 import sys
 import os
-import signal
 
 
 if sys.platform.startswith("win"):
