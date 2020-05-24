@@ -32,7 +32,6 @@ class FrameHeader(wx.Panel):
 
         self.layoutComponent()
 
-
     def setTitle(self, title):
         self._header.SetLabel(title)
 
@@ -44,7 +43,6 @@ class FrameHeader(wx.Panel):
             img.Show(False)
         getattr(self, image).Show(True)
         self.Layout()
-
 
     def layoutComponent(self):
 
@@ -85,12 +83,10 @@ class FrameHeader(wx.Panel):
         vsizer.Add(sizer, 1, wx.EXPAND)
         self.SetSizer(vsizer)
 
-
     def _load_image(self, imgPath, targetHeight):
         rawImage = imageutil.loadImage(imgPath)
         sizedImage = imageutil.resizeImage(rawImage, targetHeight)
         return imageutil.wrapBitmap(sizedImage, self)
-
 
     def build_heading_sizer(self):
         sizer = wx.BoxSizer(wx.VERTICAL)

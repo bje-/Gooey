@@ -19,7 +19,6 @@ class TestGooeyIntegration(unittest.TestCase):
         from gooey.tests.integration import runner
         runner.run_integration(validations_module, self.verifyValidators)
 
-
     def verifyValidators(self, app, buildSpec):
         time.sleep(1)
         try:
@@ -35,7 +34,6 @@ class TestGooeyIntegration(unittest.TestCase):
             import wx
             wx.CallAfter(app.TopWindow.Destroy)
             return None
-
 
 
 if __name__ == '__main__':

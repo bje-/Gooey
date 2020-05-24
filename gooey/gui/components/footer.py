@@ -62,14 +62,12 @@ class Footer(wx.Panel):
                         pb.SetValue(value + 1)
                 pb.SetValue(value)
 
-
     def showButtons(self, *buttonsToShow):
         for button in self.buttons:
             button.Show(False)
         for button in buttonsToShow:
             getattr(self, button).Show(True)
         self.Layout()
-
 
     def _init_components(self):
         self.cancel_button = self.button(_('cancel'), wx.ID_CANCEL, event_id=events.WINDOW_CANCEL)
@@ -87,7 +85,6 @@ class Footer(wx.Panel):
 
         if self.buildSpec['disable_stop_button']:
             self.stop_button.Enable(False)
-
 
     def _do_layout(self):
         self.stop_button.Hide()

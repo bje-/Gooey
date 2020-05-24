@@ -8,12 +8,10 @@ from tests.integration.programs import all_widgets as all_widgets_module
 
 class TestGooeyIntegration99(unittest.TestCase):
 
-
     def test_gooeyNormalRun(self):
         """ Tests the happy path through the default run mode of Gooey """
         from gooey.tests.integration import runner
         runner.run_integration(all_widgets_module, self.gooeySanityTest)
-
 
     def gooeySanityTest(self, app, buildSpec):
         time.sleep(1)

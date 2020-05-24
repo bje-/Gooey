@@ -15,7 +15,6 @@ class Tabbar(wx.Panel):
         self.options = list(self.buildSpec['widgets'].keys())
         self.layoutComponent()
 
-
     def layoutComponent(self):
         for group, panel in zip(self.options, self.configPanels):
             panel.Reparent(self.notebook)

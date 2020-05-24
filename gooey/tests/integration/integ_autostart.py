@@ -44,7 +44,6 @@ class TestGooeyIntegration(unittest.TestCase):
             self.assertEqual(title, _("finished_title"))
             self.assertEqual(subtitle, _('finished_msg'))
 
-
             # and that output was actually written to the console
             self.assertIn("Success", app.TopWindow.console.textbox.GetValue())
         except:
@@ -54,8 +53,6 @@ class TestGooeyIntegration(unittest.TestCase):
             import wx
             wx.CallAfter(app.TopWindow.Destroy)
             return None
-
-
 
 
 if __name__ == '__main__':

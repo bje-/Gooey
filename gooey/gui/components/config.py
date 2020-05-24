@@ -33,7 +33,6 @@ class ConfigPage(ScrolledPanel):
                 if name in {'optional_args_msg', 'required_args_msg'}
                 else name)
 
-
     def firstCommandIfPresent(self, widget):
         commands = widget._meta['commands']
         return commands[0] if commands else ''
@@ -46,11 +45,9 @@ class ConfigPage(ScrolledPanel):
         return [widget.getValue()['cmd'] for widget in self.reifiedWidgets
                 if widget.info['cli_type'] != 'positional']
 
-
     def isValid(self):
         states = [widget.getValue() for widget in self.reifiedWidgets]
         return not any(compact([state['error'] for state in states]))
-
 
     def seedUI(self, seeds):
         radioWidgets = self.indexInternalRadioGroupWidgets()
@@ -64,7 +61,6 @@ class ConfigPage(ScrolledPanel):
         groups = filter(lambda x: x.info['type'] == 'RadioGroup', self.reifiedWidgets)
         widgets = flatmap(lambda group: group.widgets, groups)
         return indexunique(lambda x: x._id, widgets)
-
 
     def displayErrors(self):
         states = [widget.getValue() for widget in self.reifiedWidgets]
@@ -85,7 +81,6 @@ class ConfigPage(ScrolledPanel):
     def hideErrors(self):
         for widget in self.reifiedWidgets:
             widget.hideErrorString()
-
 
     def layoutComponent(self):
         sizer = wx.BoxSizer(wx.VERTICAL)
@@ -155,14 +150,12 @@ class ConfigPage(ScrolledPanel):
                 boxSizer.Add(hs, *args)
                 hs = wx.BoxSizer(wx.HORIZONTAL)
 
-
         group_top_margin = getin(group, ['options', 'margin_top'], 1)
 
         marginSizer = wx.BoxSizer(wx.VERTICAL)
         marginSizer.Add(boxSizer, 1, wx.EXPAND | wx.TOP, group_top_margin)
 
         thissizer.Add(marginSizer, *args)
-
 
     def chunkWidgets(self, group):
         ''' chunk the widgets up into groups based on their sizing hints '''
@@ -181,7 +174,6 @@ class ConfigPage(ScrolledPanel):
                 subgroup = []
         return ui_groups
 
-
     def reifyWidget(self, parent, item):
         ''' Convert a JSON description of a widget into a WxObject '''
         from gooey.gui.components import widgets
@@ -189,12 +181,10 @@ class ConfigPage(ScrolledPanel):
         return widgetClass(parent, item)
 
 
-
 class TabbedConfigPage(ConfigPage):
     """
     Splits top-level groups across tabs
     """
-
 
     def layoutComponent(self):
         # self.rawWidgets['contents'] = self.rawWidgets['contents'][1:2]
@@ -209,7 +199,6 @@ class TabbedConfigPage(ConfigPage):
             panel.Layout()
             self.notebook.AddPage(panel, group['name'])
             self.notebook.Layout()
-
 
         _sizer = wx.BoxSizer(wx.VERTICAL)
         _sizer.Add(self.notebook, 1, wx.EXPAND)

@@ -43,10 +43,9 @@ class Console(wx.Panel):
             # The rich console provides the embedded URL via GetString()
             # but the basic console does not
             webbrowser.open(
-                event.GetString() or \
+                event.GetString() or
                 self.textbox.GetRange(event.URLStart, event.URLEnd))
         event.Skip()
-
 
     def getFontStyle(self):
         """
@@ -57,7 +56,6 @@ class Console(wx.Panel):
                 if self.buildSpec['monospace_display']
                 else wx.DEFAULT)
 
-
     def getFontFace(self):
         """Choose the best font face available given the user options"""
         userFace = self.buildSpec['terminal_font_family'] or self.defaultFont.GetFaceName()
@@ -65,11 +63,9 @@ class Console(wx.Panel):
                 if self.buildSpec['monospace_display']
                 else userFace)
 
-
     def logOutput(self, *args, **kwargs):
         """Event Handler for console updates coming from the client's program"""
         self.appendText(kwargs.get('msg'))
-
 
     def appendText(self, txt):
         """
@@ -85,7 +81,6 @@ class Console(wx.Panel):
             Clear the the main TextCtrl.
         """
         self.textbox.Clear()
-
 
     def getText(self):
         return self.textbox.GetValue()

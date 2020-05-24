@@ -22,16 +22,13 @@ class Sidebar(wx.Panel):
         self.layoutComponent()
         self.listbox.SetSelection(0)
 
-
     def getSelectedGroup(self):
         """Return the currently active 'group' i.e. the root SubParser """
         return self.options[self.activeSelection]
 
-
     def getActiveConfig(self):
         """Return the currently visible config screen"""
         return self.configPanels[self.activeSelection]
-
 
     def swapConfigPanels(self, event):
         """Hide/show configuration panels based on the currently selected
@@ -41,7 +38,6 @@ class Sidebar(wx.Panel):
         self.activeSelection = event.Selection
         self.configPanels[event.Selection].Show()
         self._parent.Layout()
-
 
     def layoutComponent(self):
         left = self.layoutLeftSide()
@@ -65,7 +61,6 @@ class Sidebar(wx.Panel):
             left.Show(False)
 
         self.Layout()
-
 
     def layoutLeftSide(self):
         self.leftPanel.SetBackgroundColour(self.buildSpec['sidebar_bg_color'])

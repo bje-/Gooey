@@ -21,16 +21,12 @@ def transactUI(obj):
         obj.Thaw()
 
 
-
-
 styles = {
     'h0': (wx.FONTFAMILY_DEFAULT, Constants.WX_FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False),
     'h1': (wx.FONTFAMILY_DEFAULT, Constants.WX_FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False),
     'h2': (wx.FONTFAMILY_DEFAULT, Constants.WX_FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False),
     'bold': (wx.FONTFAMILY_DEFAULT, Constants.WX_FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
 }
-
-
 
 
 def make_bold(statictext):

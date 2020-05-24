@@ -17,7 +17,6 @@ class MenuBar(wx.MenuBar):
         self.buildSpec = buildSpec
         self.makeMenuItems(buildSpec.get('menu', []))
 
-
     def makeMenuItems(self, menuGroups):
         """
         Assign the menu groups list to wx.Menu instances
@@ -29,7 +28,6 @@ class MenuBar(wx.MenuBar):
                 option = menu.Append(wx.NewId(), item.get('menuTitle', ''))
                 self.Bind(wx.EVT_MENU, self.handleMenuAction(item), option)
             self.Append(menu, '&' + menuGroup.get('name'))
-
 
     def handleMenuAction(self, item):
         """
@@ -43,13 +41,11 @@ class MenuBar(wx.MenuBar):
         f = handlers[item['type']]
         return partial(f, item)
 
-
     def openBrowser(self, item, *args, **kwargs):
         """
         Open the supplied URL in the user's default browser.
         """
         webbrowser.open(item.get('url'))
-
 
     def spawnMessageDialog(self, item, *args, **kwargs):
         """
@@ -57,7 +53,6 @@ class MenuBar(wx.MenuBar):
         """
         wx.MessageDialog(self, item.get('message', ''),
                          caption=item.get('caption', '')).ShowModal()
-
 
     def spawnAboutDialog(self, item, *args, **kwargs):
         """

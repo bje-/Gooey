@@ -72,7 +72,6 @@ class GooeyApplication(wx.Frame):
         if self.buildSpec.get('auto_start', False):
             self.onStart()
 
-
     def applyConfiguration(self):
         self.SetTitle(self.buildSpec['program_name'])
         self.SetBackgroundColour(self.buildSpec.get('body_bg_color'))
@@ -93,14 +92,12 @@ class GooeyApplication(wx.Frame):
                 config.displayErrors()
                 self.Layout()
 
-
     def onEdit(self):
         """Return the user to the settings screen for further editing"""
         with transactUI(self):
             if self.buildSpec['poll_external_updates']:
                 self.fetchExternalUpdates()
             self.showSettings()
-
 
     def buildCliString(self):
         """
@@ -118,7 +115,6 @@ class GooeyApplication(wx.Frame):
             optional,
             suppress_gooey_flag=self.buildSpec['suppress_gooey_flag']
         )
-
 
     def onComplete(self, *args, **kwargs):
         """
@@ -141,13 +137,11 @@ class GooeyApplication(wx.Frame):
                     if self.buildSpec.get('show_failure_modal'):
                         wx.CallAfter(modals.showFailure)
 
-
     def onStopExecution(self):
         """Displays a scary message and then force-quits the executing
         client code if the user accepts"""
         if self.buildSpec['show_stop_warning'] and modals.confirmForceStop():
             self.clientRunner.stop()
-
 
     def fetchExternalUpdates(self):
         """
@@ -162,18 +156,15 @@ class GooeyApplication(wx.Frame):
         for config in self.configs:
             config.seedUI(seeds)
 
-
     def onCancel(self):
         """Close the program after confirming"""
         if modals.confirmExit():
             self.onClose()
 
-
     def onClose(self, *args, **kwargs):
         """Cleanup the top level WxFrame and shutdown the process"""
         self.Destroy()
         sys.exit()
-
 
     def layoutComponent(self):
         sizer = wx.BoxSizer(wx.VERTICAL)
@@ -199,8 +190,6 @@ class GooeyApplication(wx.Frame):
             self.taskbarIcon = TaskBarIcon(iconType=wx.adv.TBI_DOCK)
             self.taskbarIcon.SetIcon(icon)
 
-
-
     def buildNavigation(self):
         """
         Chooses the appropriate layout navigation component based on user prefs
@@ -213,13 +202,11 @@ class GooeyApplication(wx.Frame):
                 navigation.Hide()
         return navigation
 
-
     def buildConfigPanels(self, parent):
         page_class = TabbedConfigPage if self.buildSpec['tabbed_groups'] else ConfigPage
 
         return [page_class(parent, widgets, self.buildSpec)
                 for widgets in self.buildSpec['widgets'].values()]
-
 
     def showSettings(self):
         self.navbar.Show(True)
@@ -229,7 +216,6 @@ class GooeyApplication(wx.Frame):
         self.header.setSubtitle(self.buildSpec['program_description'])
         self.footer.showButtons('cancel_button', 'start_button')
         self.footer.progress_bar.Show(False)
-
 
     def showConsole(self):
         self.navbar.Show(False)
@@ -242,7 +228,6 @@ class GooeyApplication(wx.Frame):
         if not self.buildSpec['progress_regex']:
             self.footer.progress_bar.Pulse()
 
-
     def showComplete(self):
         self.navbar.Show(False)
         self.console.Show(True)
@@ -252,7 +237,6 @@ class GooeyApplication(wx.Frame):
         self.footer.showButtons(*buttons)
         self.footer.progress_bar.Show(False)
 
-
     def showSuccess(self):
         self.showComplete()
         self.header.setImage('check_mark')
@@ -260,13 +244,11 @@ class GooeyApplication(wx.Frame):
         self.header.setSubtitle(_('finished_msg'))
         self.Layout()
 
-
     def showError(self):
         self.showComplete()
         self.header.setImage('error_symbol')
         self.header.setTitle(_('finished_title'))
         self.header.setSubtitle(_('finished_error'))
-
 
     def showForceStopped(self):
         self.showComplete()
